@@ -1,4 +1,2 @@
-learningMaterial
+My Private training Material
 ================
-
-learningMaterial
