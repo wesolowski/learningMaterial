@@ -1,8 +1,6 @@
 
 (function(){
 
-    //27:00
-
     var form = document.getElementById('theForm'),
         button = form.myButton,
         textbox = form.myTextbox,
