@@ -1,0 +1,1 @@
+{"channel":{"title":"RSS Sample","description":"A sample RSS Feed","link":"http://www.johndeo.com","lastBuildDate":"Tue, 19 Feb 2013 13:33:15","pubDate":"Tue, 19 Feb 2013 13:33:15","items":[{"title":"An Item's Title","description":"A Item","link":"http://www.johndoe.com/item1","pubDate":"Tue, 19 Feb 2013 13:33:15"}]}}
