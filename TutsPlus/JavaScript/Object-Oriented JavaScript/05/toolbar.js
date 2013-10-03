@@ -124,3 +124,20 @@ var oojs = (function(oojs) {
 // toolbarItem.enabled = true; //or false
 
 // var enabled = toolbarItem.enabled;
+
+var toolbar = oojs.createToolbar('myToolbar');
+
+var toolbarItem = toolbar.items[1];
+
+toolbarItem.enabled = false;
+toolbarItem.enabled = true;
+
+toolbarItem.activated = true;
+toolbarItem.activated = false;
+
+toolbarItem.toggleActiveState();
+
+console.log('toolbarItem.activated', toolbarItem.activated);
+console.log('toolbarItem.enabled', toolbarItem.enabled);
+
+
