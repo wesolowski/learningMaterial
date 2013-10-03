@@ -1,0 +1,21 @@
+.toolbar {
+    background-color: #c6c6c6;
+    height: 50px;
+    padding: 5px;
+}
+
+.toolbar-item {
+    margin: 0 2px;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+}
+
+.active {
+    background-color: yellow;
+}
+
+.disabled {
+    background-color: gray;
+}
