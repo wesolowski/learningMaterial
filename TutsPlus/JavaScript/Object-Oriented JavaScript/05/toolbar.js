@@ -1,4 +1,4 @@
-//19:00
+
 var oojs = (function(oojs) {
 
     var createToolbarItems = function( itemElements ) {
