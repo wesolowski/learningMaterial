@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Exercise 01: Toolbar</title>
+    <link rel="stylesheet" href="toolbar.css" />
+</head>
+<body>
+    <div id="myToolbar" class="toolbar">
+        <span class="toolbar-item"></span>
+        <span class="toolbar-item white"></span>
+        <span class="toolbar-item"></span>
+    </div>
+
+
+    <script src="eventtarget.js"></script>
+    <script src="toolbar.js"></script>
+    <script>
+    var toolbar = oojs.createToolbar('myToolbar');
+
+    toolbar.addListener('itemremoved', function(evt) {
+        console.log(evt.type);
+    });
+
+    toolbar.items[0].addListener('enabledchanged', function(evt) {
+        console.log(evt.value);
+    });
+
+    toolbar.items[0].enabled = false;
+    toolbar.items[0].enabled = false;
+    toolbar.items[0].enabled = true;
+    toolbar.remove(2);
+    </script>
+</body>
+</html>
