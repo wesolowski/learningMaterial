@@ -1,6 +1,6 @@
 <?php
 
-require './TablePrinter/Formatter.php';
+require 'TablePrinter/Formatter.php';
 
 class TablePrinter
 {
