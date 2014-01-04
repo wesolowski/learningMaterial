@@ -16,4 +16,3 @@ class InMemoryCart implements CartGateway {
 	}
 }
 
-?>

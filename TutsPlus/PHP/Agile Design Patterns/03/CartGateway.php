@@ -6,4 +6,4 @@ interface CartGateway {
 	public function getIdOfRecordedCart();
 }
 
-?>
+

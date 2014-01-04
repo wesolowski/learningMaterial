@@ -9,7 +9,7 @@ class ShoppingHistory {
 		$this->shoppingCartIds = $ids;
 	}
 
-	function listAllCarts() {
+	public function listAllCarts() {
 		$shoppingCarts = array();
 
 		foreach ($this->shoppingCartIds as $id) {
@@ -20,4 +20,3 @@ class ShoppingHistory {
 	}
 }
 
-?>
