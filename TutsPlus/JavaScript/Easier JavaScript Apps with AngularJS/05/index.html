@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <input type="checkbox" ng-model="checked"><label>Show?</label>
+        </div>
+
+        <div ng-show="checked">
+            Hello, world!
+        </div>
+
+        <div>
+            <input type="checkbox" ng-model="checked2"><label>Hide?</label>
+        </div>
+         <div ng-hide="checked2">
+            Hello, world2!
+        </div>
+
+        <div>
+            <label>Name</label><input type="text" ng-model="name">
+        </div>
+         <div ng-show="checked">
+            Hello {{name || "world"}}!
+        </div>
+
+
+    </body>
+    <script>
+
+    </script>
+</html>
