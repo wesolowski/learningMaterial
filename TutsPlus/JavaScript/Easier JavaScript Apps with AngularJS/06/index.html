@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <body>
+
+        <div>
+            <input type="search" ng-model="search">
+        </div>
+
+        <div  ng-controller="list">
+            <ul>
+                <li ng-repeat="name in names | filter:search">{{name}}</li>
+            </ul>
+        </div>
+
+        <hr/>
+
+        <div>
+            <input type="search" ng-model="search2">
+        </div>
+
+        <div  ng-controller="list2">
+            <ul>
+                <li ng-repeat="person in people | filter:search2">{{person.name}} : {{person.age}}</li>
+            </ul>
+        </div>
+
+
+        <script>
+            var list = function( $scope )
+            {
+                $scope.names = ["Tom", "Jeffrey", "Dan", "David"]
+            };
+
+            var list2 = function( $scope )
+            {
+                $scope.people = [
+                    { name: "Tom", age: 20 },
+                    { name: "Jeffrey", age: 25 },
+                    { name: "Dan", age: 30 },
+                    { name: "David", age: 25 },
+                ];
+            };
+        </script>
+    </body>
+</html>
