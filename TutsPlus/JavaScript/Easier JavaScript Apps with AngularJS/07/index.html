@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <style>
+        .first-true{
+            background-color: red;
+        }
+    </style>
+    <body>
+        <div>
+            <input type="search" ng-model="search">
+        </div>
+        <div  ng-controller="list">
+            <ul>
+                <li ng-repeat="person in people | filter:search">
+                    {{person.name}} : {{person.age}}
+                    <button ng-click="remove($index)" class="first-{{$first}}">x</button>
+                    <span ng-show="$first">First</span>
+                    <span ng-show="$last">Last</span>
+                    <span ng-show="$middle">Middle</span>
+                </li>
+            </ul>
+
+            <span>Thera are {{people.length}} people in the list.</span>
+            <div>
+                <label>Name:</label><input ng-model="new_name">
+                <br>
+                <label>Age:</label><input type="number" ng-model="new_age">
+                <button ng-click="add()">Add</button>
+            </div>
+        </div>
+
+        <script>
+            var list = function( $scope )
+            {
+                $scope.people = [
+                    { name: "Tom", age: 20 },
+                    { name: "Jeffrey", age: 25 },
+                    { name: "Dan", age: 30 },
+                    { name: "David", age: 25 },
+                ];
+
+                $scope.add = function() {
+                    $scope.people.push({
+                        name: $scope.new_name,
+                        age: $scope.new_age
+                    });
+                    $scope.new_name = '';
+                    $scope.new_age = '';
+                };
+
+                $scope.remove = function( index )
+                {
+                    $scope.people.splice(index, 1);
+                };
+            };
+        </script>
+    </body>
+</html>
