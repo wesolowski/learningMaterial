@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <body>
+    <div ng-controller="Example">
+        {{name}}
+    </div>
+
+        <script>
+            angular.module('myApp', [])
+            .controller('Example', function( $scope){
+                $scope.name = "Example";
+            });
+        </script>
+    </body>
+</html>
