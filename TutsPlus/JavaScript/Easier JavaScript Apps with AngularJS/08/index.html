@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <style>
+        .first-true{
+            background-color: red;
+        }
+    </style>
+    <body>
+
+        <div class="browser" ng-controller="Browser">
+
+            <div class="url">
+                <label for="url">&larr; &rarr; &infin;</label>
+                <input value="edit/{{path}}">
+            </div>
+            <div class="page">
+                <label>Update the url:</label>
+                <input ng-change="clean()" ng-model="path">
+            </div>
+
+        </div>
+
+        <script>
+            var Browser = function ($scope) {
+
+
+                $scope.clean = function()
+                {
+                    $scope.path = $scope.path
+                                            .replace(/\s+/, '-')
+                                            .replace(/[^a-z0-9]/i, '');
+                }
+            };
+        </script>
+
+        <div ng-controller="Contacts">
+            <select ng-model="selected_person"
+                    ng-options="person.name for person in people">
+                <option value="">Choose a person:</option>
+            </select>
+            {{selected_person.name}}
+        </div>
+        <script>
+            var Contacts = function($scope )
+            {
+                $scope.people = [
+                    {name: 'Rafal Wesolowski', number: '1234567890'},
+                    {name: 'Jeffrey Way', number: '0987654321'},
+                    {name: 'John Doe', number: '1234512345'}
+                ];
+            };
+
+
+        </script>
+
+        <div>
+            <input type="search" ng-model="search">
+        </div>
+
+        <div ng-controller="Contacts2">
+            <select ng-model="selected_person2"
+                    ng-options="person.name for person in people | filter:search">
+                <option value="">Choose a person:</option>
+            </select>
+            <div>
+                <label>name</label><input ng-model="selected_person2.name">
+                <br>
+                <label>number</label><input ng-model="selected_person2.number">
+            </div>
+        </div>
+        <script>
+            var Contacts2 = function($scope )
+            {
+                $scope.people = [
+                    {name: 'Rafal Wesolowski', number: '1234567890'},
+                    {name: 'Jeffrey Way', number: '0987654321'},
+                    {name: 'John Doe', number: '1234512345'}
+                ];
+            };
+
+
+        </script>
+    </body>
+</html>
