@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    </head>
+    <body>
+        <div ng-controller="Example">
+            {{name}}
+        </div>
+
+<!--     <div ng-controller="a">
+        {{name}}
+    </div> -->
+
+        <script>
+            // var Example = function( $scope){
+            //     $scope.name = "Rafal";
+            // };
+            // console.log(Example.toString());
+            // var a = function(b){
+            //     b.name = "Rafal";
+            // };
+            // a.$inject = ['$scope'];
+
+            angular.module('myApp', [])
+            .controller('Example', ['$scope', function(s) {
+                s.name ="Rafal";
+            }]);
+        </script>
+    </body>
+</html>
