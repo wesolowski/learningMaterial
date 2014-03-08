@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+        * { box-sizing: border-box; }
+        body { font: 14px/1.5 sans-serif; color: #222; margin: 3em;}
+    </style>
+    <body>
+        <div ng-controller="Example">
+            <button click="click()">{{message}}</button>
+            <my:clicker click="click()">{{message}}</my:clicker>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+        <script>
+            angular.module('myApp', [])
+            .directive('click', [function () {
+                return {
+                    restrict: 'A',
+                    link: function (scope, iElement, iAttrs) {
+                        iElement.bind('click', function(){
+                            scope.$eval(iAttrs.click);
+                        });
+                    }
+                };
+            }])
+            .directive('myClicker', [function () {
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    transclude: true,
+                    template: '<button ng-transclude></button>',
+                    link: function (scope, iElement, iAttrs) {
+                        iElement.bind('click', function(){
+                            scope.$eval(iAttrs.clicker);
+                        });
+                    }
+                };
+            }])
+            .controller('Example', function($scope)
+            {
+                $scope.message = "Hello!";
+                $scope.click = function(event) {
+                    console.log($scope.message);
+                };
+            });
+        </script>
+    </body>
+</html>
