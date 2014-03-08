@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+        * { box-sizing: border-box; }
+        body { font: 14px/1.5 sans-serif; color: #222; margin: 3em;}
+    </style>
+    <body>
+        <div ng-controller="Filter">
+            <p>{{text | clean}}</p>
+            <p>{{text | clean2:' '}}</p>
+            <p>{{text | clean2:''}}</p>
+            <p>{{text | clean2:'+'}}</p>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+        <script>
+            /**
+            * myApp Module
+            *
+            * Description
+            */
+            angular.module('myApp', [])
+            .filter('clean', function() {
+                return function(input)
+                {
+                    return input.toLowerCase()
+                                .replace(/\s+/g, '-')
+                                .replace(/[^a-z0-9-]/g, '');
+                }
+            })
+            .filter('clean2', function() {
+                return function(input, separator)
+                {
+                    var filter = new RegExp('[^a-z0-9' + ( separator || '-' ) + ']', 'ig');
+                    return input.toLowerCase()
+                                .replace(/\s+/g, ( separator || '-' ))
+                                .replace(filter, '');
+                }
+            })
+            .controller('Filter', ['$scope', function ($scope) {
+                $scope.text = "Hello world, this is some text!";
+            }])
+        </script>
+    </body>
+</html>
