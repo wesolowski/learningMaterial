@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html ng-app="contacts">
+<meta charset="utf-8">
+<title>Contacts</title>
+<meta name="viewport" content="width=device-width">
+
+<base href="/">
+<script src="js/angular.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/angular-route.js"></script>
+
+
+<style>
+    * { box-sizing: border-box; }
+    body { font: 14px/1.5 sans-serif; color: #222; margin: 3em; }
+    table, input, textarea { width: 100%; }
+    th { text-align: left; }
+    h4 { margin: 0; }
+</style>
+
+<div ng-controller="Contacts">
+    <h1>Contacts</h1>
+    <div ng-view></div>
+</div>
+
+<script>
+    angular.module('contacts', ['ngResource', 'ngRoute'])
+    .config(function ($routeProvider, $locationProvider) {
+        // Set up our routes
+        $routeProvider
+            .when('/contact/:id', {
+                controller: 'Single',
+                templateUrl: 'single.html'
+            })
+            .when('/add', {
+                controller: 'Add',
+                templateUrl: 'add.html'
+            })
+            .when('/', {
+                controller: 'Table',
+                templateUrl: 'table.html'
+            });
+        // Use HTML5 mode (History API) when changing URL
+        $locationProvider.html5Mode(true);
+    })
+    .factory('Contact', function ($resource) {
+        return $resource('/api/contacts/:id');
+    })
+    .controller('Contacts', function ($scope, $resource) {})
+    .controller('Table', function ($scope, $resource, Contact ) {
+        $scope.contacts = Contact.query();
+    })
+    .controller('Single', function ($scope, $resource, $routeParams, Contact ) {
+        $scope.contact = Contact.get({ id: $routeParams.id});
+    });
+</script>
