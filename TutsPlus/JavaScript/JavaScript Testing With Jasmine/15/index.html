@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .some-class{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p>Hello there Tuts+ Premium viewers</p>
+    <p>Hello there Tuts+ Premium viewers</p>
+    <p>Hello there Tuts+ Premium viewers</p>
+
+    <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="src/jquery.styleWords.js"></script>
+
+    <script>
+        $('p').styleWords(2 ,{
+            id: 'styleWords',
+            class: 'some-class'
+        });
+    </script>
+</body>
+</html>
