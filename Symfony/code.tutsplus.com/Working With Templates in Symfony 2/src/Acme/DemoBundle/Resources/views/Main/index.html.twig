@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AcmeDemoBundle:Main:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Main:index page</h1>
+
+{% if user.active %}
+    <p>Hello, {{ user.name }}</p>
+{% endif %}
+
+{% endblock %}
