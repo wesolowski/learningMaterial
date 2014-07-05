@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AcmeDemoBundle:Main:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Main:index page</h1>
+
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.fullname) }}
+{{ form_end(form) }}
+
+
+
+{% endblock %}
