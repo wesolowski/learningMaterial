@@ -1,0 +1,4 @@
+start:
+    resource: "@StartBundle/Resources/config/routing.php"
+    prefix:   /
+
