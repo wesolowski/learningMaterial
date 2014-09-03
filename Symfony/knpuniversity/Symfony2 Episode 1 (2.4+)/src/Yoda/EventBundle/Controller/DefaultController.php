@@ -9,19 +9,26 @@ class DefaultController extends Controller
 {
     public function indexAction($firstName, $count)
     {
-        $data = array(
-            'count' => $count,
-            'firstName' => $firstName,
-            'ackbar' => 'It\'s a traaaaap!'
+        return $this->render(
+            'EventBundle:Default:index.html.twig',
+            array('name' => $firstName)
         );
 
-        $json = json_encode($data);
 
-        $response = new Response($json);
-        $response->headers->set('Content-Type', 'application/json');
+        // 2
+        // $templating = $this->container->get('templating');
 
-        return $response;
-        //2. return new Response('It\'s a traaaaap!');
-        //1. return $this->render('EventBundle:Default:index.html.twig', array('name' => $firstName));
+        // return $templating->renderResponse(
+        //     'EventBundle:Default:index.html.twig',
+        //     array('name' => $firstName)
+        // );
+
+        // 1.
+        // $content = $templating->renderRespons(
+        //     'EventBundle:Default:index.html.twig',
+        //     array('name' => $firstName)
+        // );
+
+        // return new Response($content);
     }
 }
