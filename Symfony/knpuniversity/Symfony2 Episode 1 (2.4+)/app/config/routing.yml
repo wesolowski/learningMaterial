@@ -1,1 +1,5 @@
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # nothing here yet!
