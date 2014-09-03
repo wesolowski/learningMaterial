@@ -11,24 +11,7 @@ class DefaultController extends Controller
     {
         return $this->render(
             'EventBundle:Default:index.html.twig',
-            array('name' => $firstName)
+            array('name' => $firstName, 'count' => $count)
         );
-
-
-        // 2
-        // $templating = $this->container->get('templating');
-
-        // return $templating->renderResponse(
-        //     'EventBundle:Default:index.html.twig',
-        //     array('name' => $firstName)
-        // );
-
-        // 1.
-        // $content = $templating->renderRespons(
-        //     'EventBundle:Default:index.html.twig',
-        //     array('name' => $firstName)
-        // );
-
-        // return new Response($content);
     }
 }
