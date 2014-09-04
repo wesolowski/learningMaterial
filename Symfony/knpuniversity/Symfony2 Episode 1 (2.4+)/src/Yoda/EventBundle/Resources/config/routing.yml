@@ -1,3 +1,6 @@
 event_homepage:
     path:     /hello/{firstName}/{count}
     defaults: { _controller: EventBundle:Default:index }
+
+foo_bar_event_import:
+    resource: "@EventBundle/Resources/config/routing/event.yml"
