@@ -13,6 +13,10 @@
             <section>
                 {# the opening <form> tag #}
                 {{ form_start(form) }}
+
+                    {{ app.request.host }}
+                    {{ app.session.get('some_key') }}
+
                     {{ form_errors(form) }}
                     <h1>
                         {{ form_errors(form.name) }}
