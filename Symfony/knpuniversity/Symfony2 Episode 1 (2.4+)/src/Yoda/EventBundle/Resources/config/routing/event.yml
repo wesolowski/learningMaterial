@@ -1,6 +1,7 @@
-event:
-    path:     /
-    defaults: { _controller: "EventBundle:Event:index" }
+# this is done via  route annotations now
+# event:
+#     path:     /
+#     defaults: { _controller: "EventBundle:Event:index" }
 
 event_show:
     path:     /{id}/show

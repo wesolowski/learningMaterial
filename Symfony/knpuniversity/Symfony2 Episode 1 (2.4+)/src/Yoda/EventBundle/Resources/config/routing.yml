@@ -4,3 +4,7 @@ event_homepage:
 
 foo_bar_event_import:
     resource: "@EventBundle/Resources/config/routing/event.yml"
+
+event_annotations:
+    resource: "@EventBundle/Controller"
+    type:     annotation
