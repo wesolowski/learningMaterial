@@ -27,5 +27,6 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-        - { path: ^/new, roles: ROLE_USER }
-        - { path: ^/create, roles: ROLE_USER }
+# putting security in the controller class instead!
+#             - { path: ^/new, roles: ROLE_USER }
+#             - { path: ^/create, roles: ROLE_USER }
