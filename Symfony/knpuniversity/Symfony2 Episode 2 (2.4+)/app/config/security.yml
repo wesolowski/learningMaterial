@@ -7,8 +7,8 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        our_databse_users:
-            entity: { class: UserBundle:User, property: username  }
+        our_database_users:
+            entity: { class: UserBundle:User, property: username}
 
     firewalls:
         demo_secured_area:
@@ -24,6 +24,5 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-# putting security in the controller class instead!
-#             - { path: ^/new, roles: ROLE_USER }
-#             - { path: ^/create, roles: ROLE_USER }
+        - { path: ^/new, roles: ROLE_USER }
+        - { path: ^/create, roles: ROLE_USER }
