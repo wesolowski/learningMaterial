@@ -10,6 +10,27 @@
 <section class="login">
     <article>
         <h1>Register</h1>
+
+        <form action="{{ path('user_register') }}" method="POST">
+            {# {{ form_widget(form) }} #}
+            {#
+            <div class="awesome-user-wrapper">
+                {{ form_errors(form.username) }}
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+            #}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.password) }}
+
+            {{ form_rest(form) }}
+
+            <input type="submit" value="Register!" class="btn btn-primary pull-right">
+        </form>
+
     </article>
 </section>
 {% endblock %}
