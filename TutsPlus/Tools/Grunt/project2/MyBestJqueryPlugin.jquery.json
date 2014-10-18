@@ -1,0 +1,26 @@
+{
+  "name": "MyBestJqueryPlugin",
+  "title": "My Best jQuery Plugin",
+  "description": "The best jQuery plugin ever.",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Rafal Wesolowski",
+    "email": "info@styleax.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wesolowski/learningMaterial.git"
+  },
+  "bugs": "noen",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
