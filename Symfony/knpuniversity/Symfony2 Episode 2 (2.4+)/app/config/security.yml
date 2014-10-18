@@ -4,7 +4,7 @@ security:
 
     role_hierarchy:
         ROLE_USER:        [ROLE_BLOG_CREATE, ROLE_EVENT_CREATE]
-        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_EVENT_CREATE, ROLE_ALLOWED_TO_SWITCH]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
@@ -21,6 +21,7 @@ security:
                 path:   logout # a router name
                 target: event  # a route for our homepage
             anonymous: ~
+            switch_user: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
