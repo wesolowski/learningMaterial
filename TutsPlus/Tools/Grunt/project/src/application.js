@@ -1,3 +1,4 @@
+/* Rafal Wesolowski 2014 */
 var MyModule = (function() {
 
     function sayHi (name) {
@@ -6,5 +7,5 @@ var MyModule = (function() {
 
     return {
         sayHi: sayHi
-    }
+    };
 }());
