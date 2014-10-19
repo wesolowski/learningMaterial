@@ -17,10 +17,6 @@ module.exports = function (grunt) {
         jshint: {
             options: {
                 jshintrc: ".jshintrc"
-                // eqeqeq: true,
-                // curly: true,
-                // undef: true
-                // // , unused: true
             },
             target: {
                 src: "src/*.js"
@@ -42,6 +38,29 @@ module.exports = function (grunt) {
                 files: ['src/*.js'],
                 tasks: ['jshint']
             }
+        },
+
+        coffee: {
+            options: {
+                bare: false,
+                join: false,
+                seperator: ";"
+            },
+            target: {
+                expand: true,
+                cwd: 'src/',
+                src: '*.coffee',
+                dest: "lib/",
+                ext: ".js"
+            }
+        },
+
+        nodeunit: {
+            target: 'test/*_test.js'
+        },
+
+        clean: {
+            target: ['dist', 'lib']
         }
     });
 
@@ -49,6 +68,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask("default", ['jshint', 'concat', 'uglify'])
+    grunt.registerTask("default", ['jshint', 'concat', 'uglify']);
+    grunt.registerTask("reboot", ['clean', 'default']);
 };
