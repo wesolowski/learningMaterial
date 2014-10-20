@@ -61,6 +61,22 @@ module.exports = function (grunt) {
 
         clean: {
             target: ['dist', 'lib']
+        },
+        multi: {
+            target: {
+                name: 'Rafal',
+                age: 29
+            },
+            other: {
+                arr: [1,2,3],
+                bool: false
+            },
+            last: {
+                obj: {
+                    one: 1,
+                    two: 2
+                }
+            }
         }
     });
 
@@ -74,4 +90,25 @@ module.exports = function (grunt) {
 
     grunt.registerTask("default", ['jshint', 'concat', 'uglify']);
     grunt.registerTask("reboot", ['clean', 'default']);
+
+
+    grunt.registerTask('tutorial', 'this is an example task', function(){
+        if( +new Date() % 2 === 0) {
+            console.log('the time is even.');
+        } else {
+            console.log('the time is odd.');
+        }
+    });
+
+    grunt.registerTask('withArgs', function(one, two) {
+        var str = this.name + ": ";
+        str += one || "one";
+        str += two ? ", " +  two : ", two";
+        console.log(str);
+    });
+
+    grunt.registerMultiTask('multi', function() {
+        console.log('targe value:', this.target);
+        console.log('data value:', this.data);
+    });
 };
