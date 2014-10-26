@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Rafal Wesolowski",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",

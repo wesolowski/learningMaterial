@@ -1,12 +1,16 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+        pkg: grunt.file.readJSON("package.json"),
+        str: grunt.template.process("My name is <%= name %>", { data: { name: "Rafal" } } ),
         uglify: {
             options: {
                 mangle: true,
                 compress: true,
                 sourceMap: "dist/application.map",
-                banner: "/* Rafal Wesolowski 2014 */\n"
+                banner: "/* <%= str %>\n\n<%= pkg.author %> | <%= pkg.license %> " +
+                        "<%= grunt.template.date(new Date(), 'yyyy-mm-dd') %> */\n"
+                        // "<%= grunt.template.today('yyyy-mm-dd') %> */\n"
             },
             target: {
                 src: "dist/application.js",
