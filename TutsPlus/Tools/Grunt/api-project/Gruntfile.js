@@ -64,4 +64,31 @@ module.exports = function (grunt) {
             grunt.log.ok(file);
         });
     });
+
+    grunt.registerTask("options", function() {
+        var target = grunt.option("target");
+        grunt.log.writeln(target);
+    });
+
+    grunt.registerTask("util", function() {
+        grunt.log.writeln( grunt.util.kindOf([1,2,3]));
+        // grunt.util.normalizelf()
+        var  o = {
+            name: "Rafal",
+            obj: {
+                one: 1,
+                two: 2
+            },
+            arr: [ "a" , "b", "c" ]
+        };
+        grunt.util.recurse(o, function(value) {
+            grunt.log.ok(value);
+        });
+
+        grunt.log.writeln(grunt.util.repeat(16, "Na" ) + " Batman!");
+
+        grunt.log.writeln("4 " +grunt.util.pluralize(4, "function/functions"));
+
+        throw grunt.util.error("error!");
+    });
 };
