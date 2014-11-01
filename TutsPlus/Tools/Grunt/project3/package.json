@@ -1,0 +1,22 @@
+{
+  "name": "project3",
+  "description": "The best project ever.",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-qunit": "~0.2.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "nodemon": "latest"
+  }
+}
