@@ -81,6 +81,12 @@ module.exports = function (grunt) {
                     two: 2
                 }
             }
+        },
+
+        fnList: {
+            target: {
+                src : "src/*js"
+            }
         }
     });
 
@@ -91,6 +97,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadTasks('../fnList/tasks');
 
     grunt.registerTask("default", ['jshint', 'concat', 'uglify']);
     grunt.registerTask("reboot", ['clean', 'default']);
