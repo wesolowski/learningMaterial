@@ -14,4 +14,11 @@ class Controller extends BaseController{
         return $this->container->get('security.context');
     }
 
+    /**
+     * @return \Yoda\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return parent::getUser();
+    }
 }
