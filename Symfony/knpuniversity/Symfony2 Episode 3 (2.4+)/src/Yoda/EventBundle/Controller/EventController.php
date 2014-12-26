@@ -49,8 +49,13 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
+            // this works
             $entity->setOwner($this->getUser());
+
+            // if we only have this, it would *not* work
+            $events = $this->getUser()->getEvents();
+            $events[] = $entity;
+            $this->getUser()->setEvents($events);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);

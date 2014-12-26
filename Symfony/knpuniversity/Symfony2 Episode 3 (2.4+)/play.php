@@ -36,6 +36,6 @@ use Yoda\EventBundle\Entity\Event;
 $em = $container->get('doctrine')->getManager();
 
 $user = $em->getRepository('UserBundle:User')
-        ->findOneBy(array('username' => 'user'));
+        ->findOneBy(array('username' => 'admin'));
 
-var_dump($user->getEvents());
+var_dump(count($user->getEvents()));

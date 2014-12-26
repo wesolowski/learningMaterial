@@ -51,7 +51,7 @@ class Event
     private $details;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Yoda\UserBundle\Entity\User", cascade={"remove"}, inversedBy="events")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $owner;
