@@ -4,7 +4,7 @@
 #     defaults: { _controller: "EventBundle:Event:index" }
 
 event_show:
-    path:     /{id}/show
+    path:     /{slug}/show
     defaults: { _controller: "EventBundle:Event:show" }
 
 event_new:
