@@ -64,6 +64,55 @@ class Event
     protected $slug;
 
     /**
+     * @var \DateTime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getSlug()
@@ -114,7 +163,6 @@ class Event
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
