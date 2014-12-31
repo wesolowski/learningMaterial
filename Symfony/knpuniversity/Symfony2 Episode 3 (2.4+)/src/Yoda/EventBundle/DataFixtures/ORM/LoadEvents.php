@@ -21,7 +21,7 @@ class LoadEvent extends AbstractFixture implements OrderedFixtureInterface
         $event1 = new Event();
         $event1->setName('Darth\'s Birthday Party!');
         $event1->setLocation('Deathstar');
-        $event1->setTime(new \DateTime('tomorrow noon'));
+        $event1->setTime(new \DateTime('yesterday noon'));
         $event1->setDetails('Ha! Darth HATES surprises!!!');
         $event1->setOwner($user);
         $manager->persist($event1);

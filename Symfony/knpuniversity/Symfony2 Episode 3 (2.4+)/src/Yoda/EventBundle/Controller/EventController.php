@@ -25,13 +25,9 @@ class EventController extends Controller
      */
     public function indexAction()
     {
-        // $user = $this->container->get('security.context')
-        //         ->getToken()
-        //         ->getUser();
-        // $user = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('EventBundle:Event')->findAll();
+        /** @var $entitieRepo \Yoda\EventBundle\Entity\EventRepository */
+        $entitieRepo = $this->getDoctrine()->getManager()->getRepository('EventBundle:Event');
+        $entities = $entitieRepo->getUpcomingEvents();
 
         return array(
             'entities' => $entities,
