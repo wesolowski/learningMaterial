@@ -232,6 +232,50 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('event'));
     }
 
+
+    public function attendAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('EventBundle:Event')->find($id);
+
+        if(!$event) {
+            throw $this->createNotFoundException('No event found for id ' . $id);
+        }
+
+        if(!$event->hasAttendees($this->getUser())) {
+            $event->getAttendees()->add($this->getUser());
+        }
+
+        $em->persist($event);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl(
+            'event_show', array('slug' => $event->getSlug()))
+        );
+
+    }
+
+    public function unattendAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('EventBundle:Event')->find($id);
+
+        if(!$event) {
+            throw $this->createNotFoundException('No event found for id ' . $id);
+        }
+
+        if($event->hasAttendees($this->getUser())) {
+            $event->getAttendees()->removeElement($this->getUser());
+        }
+
+        $em->persist($event);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl(
+                'event_show', array('slug' => $event->getSlug()))
+        );
+    }
+
     /**
      * Creates a form to delete a Event entity by id.
      *
@@ -272,6 +316,7 @@ class EventController extends Controller
             throw new AccessDeniedException('You are not the owner!!!');
         }
     }
+
 
 
 }

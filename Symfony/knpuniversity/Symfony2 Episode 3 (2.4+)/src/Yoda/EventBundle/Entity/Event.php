@@ -90,7 +90,7 @@ class Event
     protected $attendees;
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getAttendees()
     {

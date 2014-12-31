@@ -29,3 +29,11 @@ event_delete:
     path:     /{id}/delete
     defaults: { _controller: "EventBundle:Event:delete" }
     requirements: { _method: post|delete }
+
+event_attend:
+    path:     /{id}/attend
+    defaults: { _controller: "EventBundle:Event:attend" }
+
+event_unattend:
+    path:     /{id}/unattend
+    defaults: { _controller: "EventBundle:Event:unattend" }
