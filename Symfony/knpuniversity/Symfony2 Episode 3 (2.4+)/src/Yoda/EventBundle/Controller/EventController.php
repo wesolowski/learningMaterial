@@ -234,7 +234,7 @@ class EventController extends Controller
     }
 
 
-    public function attendAction($id, $_format)
+    public function attendAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('EventBundle:Event')->find($id);
@@ -250,12 +250,9 @@ class EventController extends Controller
         $em->persist($event);
         $em->flush();
 
-        if( $_format === 'json' ){
-            $data = array(
-                'attending' => 1
-            );
-
-            return new Response(json_encode($data));
+        // if( $_format === 'json' ){
+        if( $request->getRequestFormat() === 'json' ){
+            return $this->createAttendingJson(true);
         }
 
         return $this->redirect($this->generateUrl(
@@ -279,6 +276,10 @@ class EventController extends Controller
 
         $em->persist($event);
         $em->flush();
+
+        if( $request->getRequestFormat() === 'json' ){
+            return $this->createAttendingJson(false);
+        }
 
         return $this->redirect($this->generateUrl(
                 'event_show', array('slug' => $event->getSlug()))
@@ -326,6 +327,21 @@ class EventController extends Controller
         }
     }
 
+    /**
+     * @param bool $attending
+     * @return Response
+     */
+    private function createAttendingJson($attending)
+    {
+        $data = array(
+            'attending' => $attending
+        );
+
+        $response = new Response(json_encode($data));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
 
 
 }
