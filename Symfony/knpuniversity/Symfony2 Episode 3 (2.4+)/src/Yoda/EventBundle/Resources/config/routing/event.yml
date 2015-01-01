@@ -31,9 +31,13 @@ event_delete:
     requirements: { _method: post|delete }
 
 event_attend:
-    path:     /{id}/attend
-    defaults: { _controller: "EventBundle:Event:attend" }
+    path:     /{id}/attend.{_format}
+    defaults: { _controller: "EventBundle:Event:attend", _format: html }
+    requirements:
+      _format: html|json
 
 event_unattend:
-    path:     /{id}/unattend
-    defaults: { _controller: "EventBundle:Event:unattend" }
+    path:     /{id}/unattend.{_format}
+    defaults: { _controller: "EventBundle:Event:unattend", _format: html }
+    requirements:
+          _format: html|json

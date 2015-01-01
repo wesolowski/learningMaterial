@@ -4,6 +4,7 @@ namespace Yoda\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\Response;
 use Yoda\EventBundle\Entity\Event;
 use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -233,7 +234,7 @@ class EventController extends Controller
     }
 
 
-    public function attendAction($id)
+    public function attendAction($id, $_format)
     {
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('EventBundle:Event')->find($id);
@@ -248,6 +249,14 @@ class EventController extends Controller
 
         $em->persist($event);
         $em->flush();
+
+        if( $_format === 'json' ){
+            $data = array(
+                'attending' => 1
+            );
+
+            return new Response(json_encode($data));
+        }
 
         return $this->redirect($this->generateUrl(
             'event_show', array('slug' => $event->getSlug()))
