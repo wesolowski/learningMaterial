@@ -46,11 +46,8 @@
                         </ul>
 
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                            {% if entity.hasAttendees(app.user) %}
-                                <a href="{{ path('event_unattend', {'id' : entity.id }) }}">On no! I can't go anymore!</a>
-                            {% else %}
-                                <a href="{{ path('event_attend', {'id' : entity.id }) }}">I totally want to go</a>
-                            {% endif %}
+                                <a href="{{ path('event_unattend', {'id' : entity.id }) }}" class="attend-toggle {{ entity.hasAttendees(app.user) ? '' : 'hidden' }}">On no! I can't go anymore!</a>
+                                <a href="{{ path('event_attend', {'id' : entity.id }) }}" class="attend-toggle {{ entity.hasAttendees(app.user) ? 'hidden' : '' }}">I totally want to go</a>
                         {% endif %}
 
                     </dd>
@@ -58,4 +55,33 @@
             </section>
         </article>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        jQuery(document).ready(function(){
+            var attendToggle = jQuery('.attend-toggle');
+            attendToggle.click(function(event) {
+                var $this = $(this);
+                event.preventDefault();
+                attendToggle.removeClass('hidden');
+                $this.addClass('hidden');
+
+                var url = $this.attr('href') + '.json';
+
+                $.post(url, null, function(data) {
+                   if(data.attending) {
+                       $.growlUI('Awesome!', 'See you there!');
+                   } else {
+                       $.growlUI('Ah darn', 'We\'ll miss you!');
+                   }
+                });
+
+                return false;
+            });
+
+
+        });
+    </script>
 {% endblock %}

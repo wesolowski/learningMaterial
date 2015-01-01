@@ -10,6 +10,7 @@
             {%- endif -%}
         </title>
         {% block stylesheets %}
+            <link media="all" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css" rel="stylesheet" />
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
             {% stylesheets
                 'bundles/event/css/event.css'
@@ -32,6 +33,10 @@
         {% endif %}
 
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js" ></script>
+                <script type="text/javascript" src="http://malsup.github.io/jquery.blockUI.js" ></script>
+        {% endblock %}
     </body>
 </html>

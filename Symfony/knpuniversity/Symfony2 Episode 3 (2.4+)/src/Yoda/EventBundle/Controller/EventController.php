@@ -261,7 +261,7 @@ class EventController extends Controller
 
     }
 
-    public function unattendAction($id)
+    public function unattendAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('EventBundle:Event')->find($id);
