@@ -107,7 +107,7 @@ class Event
     }
 
 
-    function __construct($attendees)
+    public function __construct()
     {
         $this->attendees = new ArrayCollection();
     }

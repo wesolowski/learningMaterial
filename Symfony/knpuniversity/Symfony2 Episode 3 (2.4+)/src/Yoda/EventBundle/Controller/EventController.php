@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\HttpFoundation\Response;
 use Yoda\EventBundle\Entity\Event;
+use Yoda\EventBundle\Exception\EventNotFountException;
 use Yoda\EventBundle\Form\EventType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -114,7 +115,8 @@ class EventController extends Controller
                      ->findOneBy(array( 'slug' => $slug ) );
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Event entity.');
+            throw new EventNotFountException('Unable to find Event entity.');
+            //throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $deleteForm = $this->createDeleteForm($entity->getId());
@@ -259,6 +261,21 @@ class EventController extends Controller
             'event_show', array('slug' => $event->getSlug()))
         );
 
+    }
+
+    /**
+     * @Template("EventBundle:Event:_events.html.twig")
+     * @return array
+     */
+    public function  _upcomingEventsAction()
+    {
+        /** @var $entitieRepo \Yoda\EventBundle\Entity\EventRepository */
+        $entitieRepo = $this->getDoctrine()->getManager()->getRepository('EventBundle:Event');
+        $entities = $entitieRepo->getUpcomingEvents();
+
+        return array(
+            'entities' => $entities,
+        );
     }
 
     public function unattendAction(Request $request,$id)
