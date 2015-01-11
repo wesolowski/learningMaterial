@@ -8,3 +8,7 @@ foo_bar_event_import:
 event_annotations:
     resource: "@EventBundle/Controller"
     type:     annotation
+
+event_report_update_events:
+    pattern: /events/report/recentlyUpdate.csv
+    defaults: { _controller: EventBundle:Report:updatedEvents, _format: csv }
