@@ -1,6 +1,8 @@
 <?php
 namespace Yoda\EventBundle\Reporting;
 
+use Doctrine\Common\Persistence\ObjectManager;
+
 /**
  * Look mom, I'm a service!!!
  *
@@ -11,7 +13,7 @@ class EventReportManager
 
     private $em;
 
-    public function __construct($em)
+    public function __construct( ObjectManager $em)
     {
         $this->em = $em;
     }
