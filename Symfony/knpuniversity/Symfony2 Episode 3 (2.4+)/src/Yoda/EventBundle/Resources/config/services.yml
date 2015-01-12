@@ -2,6 +2,7 @@ parameters:
 #    event.example.class: Yoda\EventBundle\Example
 
 services:
-#    event.example:
-#        class: %event.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    yoda_event.reporting.event_report_manager:
+        class: Yoda\EventBundle\Reporting\EventReportManager
+        arguments:
+            - "@doctrine.orm.default_entity_manager"

@@ -4,13 +4,12 @@ namespace Yoda\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response;
-use Yoda\EventBundle\Reporting\EventReportManager;
 
 class ReportController extends BaseController
 {
     public function updatedEventsAction()
     {
-        $reportManager = new EventReportManager($this->getDoctrine()->getManager());
+        $reportManager = $this->container->get('yoda_event.reporting.event_report_manager');
         $content = $reportManager->getRecentlyUpdateReport();
 
         $response = new Response($content);
