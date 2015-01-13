@@ -6,3 +6,5 @@ services:
         class: Yoda\EventBundle\Reporting\EventReportManager
         arguments:
             - "@doctrine.orm.default_entity_manager"
+        calls:
+            - [ setLogger, ["@logger"]]

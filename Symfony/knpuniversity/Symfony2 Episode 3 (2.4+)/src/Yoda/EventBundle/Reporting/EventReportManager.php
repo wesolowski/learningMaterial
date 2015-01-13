@@ -2,6 +2,7 @@
 namespace Yoda\EventBundle\Reporting;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Bridge\Monolog\Logger;
 
 /**
  * Look mom, I'm a service!!!
@@ -13,6 +14,11 @@ class EventReportManager
 
     private $em;
 
+    /**
+     * @var \Symfony\Bridge\Monolog\Logger
+     */
+    private $logger;
+
     public function __construct( ObjectManager $em)
     {
         $this->em = $em;
@@ -20,6 +26,8 @@ class EventReportManager
 
     public function  getRecentlyUpdateReport()
     {
+        $this->logInfo('Generating the recently updated events CSV!!!');
+
         $events = $this->em
                        ->getRepository('EventBundle:Event')
                        ->getRecentlyUpdatedEvents();
@@ -32,5 +40,17 @@ class EventReportManager
         }
 
         return implode('\n', $rows);
+    }
+
+    public function setLogger(Logger $logger)
+    {
+        $this->logger = $logger;
+    }
+
+    private function logInfo($msg)
+    {
+        if ($this->logger) {
+            $this->logger->info($msg);
+        }
     }
 } 
