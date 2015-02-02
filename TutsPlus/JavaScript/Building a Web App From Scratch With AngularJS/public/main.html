@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ContactsApp">
 <head lang="en">
     <meta charset="UTF-8">
     <title> Contacts </title>
@@ -9,10 +9,12 @@
 <body>
     <div class="container">
         <div class="page-header">
-            <h1>Contacts</h1>
+            <h1>Contacts: {{message}}</h1>
         </div>
     </div>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="src/app.js"></script>
 </body>
 </html>
