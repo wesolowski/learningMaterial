@@ -8,6 +8,11 @@ use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 
+// Metasteps
+use Behat\Behat\Context\Step\Given;
+use Behat\Behat\Context\Step\When;
+use Behat\Behat\Context\Step\Then;
+
 //
 // Require 3rd-party libraries here:
 //
@@ -30,6 +35,12 @@ class FeatureContext extends MinkContext
     public function __construct(array $parameters)
     {
         // Initialize your context here
+    }
+
+    /** @BeforeScenario */
+    public function beforeScenario()
+    {
+        var_dump($this->getMinkParameter('base_url'));
     }
 
     /** @Given /^I have a file named "([^"]*)"$/ */
@@ -81,5 +92,48 @@ class FeatureContext extends MinkContext
         if (is_dir('test')) {
             system('rm -r test');
         }
+    }
+
+    /**
+     * @When /^I fill in the search box with "([^"]*)"$/
+     */
+    public function iFillInTheSearchBoxWith($searchTerm)
+    {
+//        $ele = $this->getPage()->findField('search');
+//        $ele->setValue($searchTerm);
+        return new When(sprintf(
+            'I fill in "search" with "%s"',
+            $searchTerm
+        ));
+    }
+
+    /**
+     * @Given /^I press the search button$/
+     */
+    public function iPressTheSearchButton()
+    {
+        //$this->getPage()->findButton('searchButton')->press();
+        return new When('I press "searchButton"');
+    }
+
+    /**
+     * @return \Behat\Mink\Element\DocumentElement
+     */
+    protected function getPage()
+    {
+        return $this->getSession()->getPage();
+    }
+
+    /**
+     * @Given /^I am logged in$/
+     */
+    public function iAmLoggedIn()
+    {
+        return array(
+            new Given('I am on "login"'),
+            new Given('I fill in "Username" with "Ryan"'),
+            new Given('I fill in "Password" with "foobar"'),
+            new Given('I press "Login"'),
+        );
     }
 }
